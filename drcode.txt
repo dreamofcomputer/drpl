@@ -1,0 +1,11 @@
+start{
+    in{0
+        string&hello,world
+    }
+    out{
+        var&0
+    }
+    out{
+        string&hello,world
+    }
+}end
