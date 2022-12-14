@@ -40,8 +40,12 @@ if line1=="start{\n":
             if "string&" in getin:
                 getin=getin.replace(' ', '')
                 getin=getin.replace('string&', '')
+                varlist[intvar]=getin
 
-            varlist[intvar]=getin
+            if "input&" in getin:
+                getin=getin.replace(" ","")
+                getin=getin.replace("input&","")
+                varlist[intvar]=input(getin)
 
         rh=rh+1
-a=input("\n程序执行结束")
+a=input("\nend")

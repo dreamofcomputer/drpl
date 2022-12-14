@@ -1,6 +1,6 @@
 start{
     in{0
-        string&hello,world
+        input&>
     }
     out{
         var&0
