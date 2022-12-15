@@ -5,3 +5,5 @@ def drpllib(text):
         return "out"
     if "in{" in text:
         return "in"
+    if "jump" in text:
+        return "jump"

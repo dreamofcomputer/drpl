@@ -1,11 +1,9 @@
 start{
-    in{0
-        input&>
-    }
-    out{
-        var&0
-    }
     out{
         string&hello,world
+    }
+    jump[6]
+    in{0
+        input&>
     }
 }end

@@ -5,6 +5,7 @@ import dlib
 rh=2  #因为程序第一行为start{,所以用2
 line1=linecache.getline(r"drcode.txt",1)
 varlist=["","","","",""]
+
 if line1=="start{\n":
     while True:
         getlines=linecache.getline(r"drcode.txt",rh)
@@ -46,6 +47,13 @@ if line1=="start{\n":
                 getin=getin.replace(" ","")
                 getin=getin.replace("input&","")
                 varlist[intvar]=input(getin)
+
+        if revar=="jump":
+            jumpnumber=getlines.replace(" ","")
+            jumpnumber=jumpnumber.replace("\n","")
+            jumpnumber=jumpnumber.replace("jump[","")
+            jumpnumber=int(jumpnumber.replace("]",""))
+            rh=jumpnumber-1    #最后会加1，所以减1
 
         rh=rh+1
 a=input("\nend")
