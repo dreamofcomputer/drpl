@@ -1,9 +1,21 @@
 start{
-    out{
-        string&hello,world
-    }
-    jump[6]
     in{0
         input&>
     }
+
+    out{
+        var&0
+    }
+
+    =if{var&0
+        string&exit
+        ifjump[15]
+    }
+    jump[16]
+    jump[18]
+
+    jump[2]
+
 }end
+
+!this is a drpl code example

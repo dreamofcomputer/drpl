@@ -55,5 +55,36 @@ if line1=="start{\n":
             jumpnumber=int(jumpnumber.replace("]",""))
             rh=jumpnumber-1    #最后会加1，所以减1
 
+        if revar=="=if":
+            ifvar1=getlines.replace("=if{","")
+            ifvar1=ifvar1.replace("\n","")
+            ifvar1=ifvar1.replace(" ","")
+            ifvar2=linecache.getline(r"drcode.txt",rh+1)
+            ifvar2=ifvar2.replace(" ","")
+            ifvar2=ifvar2.replace("\n","")
+
+            #ifvar1
+            if "var&" in ifvar1:
+                ifvar1=varlist[int(ifvar1.replace("var&",""))]
+
+            if "string&" in ifvar1:
+                ifvar1=ifvar1.replace("string&","")
+
+            #ifvar2
+            if "var&" in ifvar2:
+                ifvar2=int(ifvar2.replace("var&",""))
+
+            if "string&" in ifvar2:
+                ifvar2=ifvar2.replace("string&","")
+
+            #if
+            if ifvar1==ifvar2:
+                ifjumprh=linecache.getline(r"drcode.txt",rh+2)
+                ifjumprh=ifjumprh.replace("ifjump[","")
+                ifjumprh=ifjumprh.replace("]","")
+                ifjumprh=ifjumprh.replace("\n","")
+                ifjumprh=int(ifjumprh.replace(" ",""))
+                rh=ifjumprh-1
+
         rh=rh+1
 a=input("\nend")
