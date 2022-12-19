@@ -13,3 +13,5 @@ def drpllib(text):
         return "in"
     if "jump" in text:
         return "jump"
+    if "console" in text:
+        return "console"

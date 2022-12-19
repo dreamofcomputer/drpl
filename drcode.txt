@@ -1,4 +1,7 @@
 start{
+    out{
+        string&hello,world
+    }
 }end
 
 !this is a drpl code example

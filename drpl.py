@@ -1,6 +1,7 @@
 #import
 import linecache
 import dlib
+import os
 
 rh=2  #因为程序第一行为start{,所以用2
 line1=linecache.getline(r"drcode.txt",1)
@@ -85,6 +86,14 @@ if line1=="start{\n":
                 ifjumprh=ifjumprh.replace("\n","")
                 ifjumprh=int(ifjumprh.replace(" ",""))
                 rh=ifjumprh-1
+        
+        if revar=="console":
+            inputcmd=getlines
+            inputcmd=inputcmd.replace("\n","")
+            inputcmd=inputcmd.replace(" ","")
+            inputcmd=inputcmd.replace("console[","")
+            inputcmd=inputcmd.replace("]","")
+            os.system(inputcmd)
 
         rh=rh+1
 a=input("\nend")
