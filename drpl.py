@@ -96,4 +96,5 @@ if line1=="start{\n":
             os.system(inputcmd)
 
         rh=rh+1
+
 a=input("\nend")
