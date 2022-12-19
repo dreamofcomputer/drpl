@@ -15,15 +15,16 @@ if line1=="start{\n":
         if revar=="out":
             getprint=linecache.getline(r"drcode.txt",rh+1)
             getprint=getprint.replace('\n', '')#去掉\n(用""替换掉"\n")
-            
-            if "string&" in getprint:
-                getprint=getprint.replace(' ', '')
+            getprint=getprint.replace("*n","\n")
+            getprint=getprint.replace(' ', '')
+            getprint=getprint.replace("*s"," ")
+
+            if "string&" in getprint:                
                 getprint=getprint.replace('string&', '')
     
                 print(getprint)
     
             if "var&" in getprint:
-                getprint=getprint.replace(' ', '')
                 getprint=int(getprint.replace('var&', ''))
     
                 print(varlist[getprint])
@@ -37,6 +38,7 @@ if line1=="start{\n":
             intvar=int(intvar)
             getin=linecache.getline(r"drcode.txt",rh+1)
             getin=getin.replace('\n', '')#去掉\n(用""替换掉"\n")
+            getin=getin.replace("*s"," ")
 
             #保留字符串
             if "string&" in getin:
@@ -69,6 +71,7 @@ if line1=="start{\n":
                 ifvar1=varlist[int(ifvar1.replace("var&",""))]
 
             if "string&" in ifvar1:
+                ifvar1=ifvar1.replace("*s"," ")
                 ifvar1=ifvar1.replace("string&","")
 
             #ifvar2
@@ -76,6 +79,7 @@ if line1=="start{\n":
                 ifvar2=int(ifvar2.replace("var&",""))
 
             if "string&" in ifvar2:
+                ifvar2=ifvar2.replace("*s"," ")
                 ifvar2=ifvar2.replace("string&","")
 
             #if
@@ -93,6 +97,7 @@ if line1=="start{\n":
             inputcmd=inputcmd.replace(" ","")
             inputcmd=inputcmd.replace("console[","")
             inputcmd=inputcmd.replace("]","")
+            inputcmd=inputcmd.replace("*s"," ")
             os.system(inputcmd)
 
         rh=rh+1
