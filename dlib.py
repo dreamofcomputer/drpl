@@ -16,3 +16,5 @@ def drpllib(text):
         return "jump"
     if "console" in text:
         return "console"
+    if "wait" in text:
+        return "wait"

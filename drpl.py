@@ -1,7 +1,9 @@
 #import
 import linecache
+from re import I
 import dlib
 import os
+import time
 
 rh=2  #因为程序第一行为start{,所以用2
 line1=linecache.getline(r"drcode.txt",1)
@@ -99,6 +101,15 @@ if line1=="start{\n":
             inputcmd=inputcmd.replace("]","")
             inputcmd=inputcmd.replace("*s"," ")
             os.system(inputcmd)
+
+        if revar=="wait":
+            inputtimer=getlines
+            inputtimer=inputtimer.replace("\n","")
+            inputtimer=inputtimer.replace("wait[","")
+            inputtimer=inputtimer.replace("]","")
+            inputtimer=inputtimer.replace(" ","")
+            inputtimer=int(inputtimer)
+            time.sleep(inputtimer)
 
         rh=rh+1
 
