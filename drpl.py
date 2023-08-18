@@ -40,16 +40,15 @@ if line1=="start{\n":
             intvar=int(intvar)
             getin=linecache.getline(r"drcode.txt",rh+1)
             getin=getin.replace('\n', '')#去掉\n(用""替换掉"\n")
+            getin=getin.replace(" ","")
             getin=getin.replace("*s"," ")
 
             #保留字符串
             if "string&" in getin:
-                getin=getin.replace(' ', '')
                 getin=getin.replace('string&', '')
                 varlist[intvar]=getin
 
             if "input&" in getin:
-                getin=getin.replace(" ","")
                 getin=getin.replace("input&","")
                 varlist[intvar]=input(getin)
 
