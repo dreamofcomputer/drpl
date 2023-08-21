@@ -56,8 +56,14 @@ if line1=="start{\n":
             jumpnumber=getlines.replace(" ","")
             jumpnumber=jumpnumber.replace("\n","")
             jumpnumber=jumpnumber.replace("jump[","")
-            jumpnumber=int(jumpnumber.replace("]",""))
+            jumpnumber=jumpnumber.replace("]","")
+
+            if "var" in jumpnumber:
+                jumpnumber=varlist[int(jumpnumber.replace("var&",""))]
+            
+            jumpnumber=int(jumpnumber)
             rh=jumpnumber-1    #最后会加1，所以减1
+            
 
         if revar=="=if":
             ifvar1=getlines.replace("=if{","")
@@ -99,6 +105,13 @@ if line1=="start{\n":
             inputcmd=inputcmd.replace("console[","")
             inputcmd=inputcmd.replace("]","")
             inputcmd=inputcmd.replace("*s"," ")
+
+            if "string&" in inputcmd:
+                inputcmd=inputcmd.replace("string&","")
+
+            if "var&" in inputcmd:
+                inputcmd=varlist[int(inputcmd.replace("var&",""))]
+
             os.system(inputcmd)
 
         if revar=="wait":
@@ -107,7 +120,12 @@ if line1=="start{\n":
             inputtimer=inputtimer.replace("wait[","")
             inputtimer=inputtimer.replace("]","")
             inputtimer=inputtimer.replace(" ","")
+            
+            if "var" in inputtimer:
+                inputtimer=varlist[int(inputtimer.replace("var&",""))]
+            
             inputtimer=int(inputtimer)
+
             time.sleep(inputtimer)
 
         rh=rh+1
