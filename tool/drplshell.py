@@ -19,5 +19,9 @@ while True:
         text=text.replace("run ","")
         os.system("start "+text+"\\runItem.bat")
     
+    if "help"==text:
+        print("1. new+[Item name]\n2. run+[Item name]\n3. help\n4. exit")
+    
     if text=="exit":
         break
+    
