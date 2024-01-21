@@ -40,15 +40,16 @@ if line1=="start{\n":
             intvar=int(intvar)
             getin=linecache.getline(r"drcode.txt",rh+1)
             getin=getin.replace('\n', '')#去掉\n(用""替换掉"\n")
-            getin=getin.replace(" ","")
             getin=getin.replace("*s"," ")
 
             #保留字符串
             if "string&" in getin:
+                getin=getin.replace(' ', '')
                 getin=getin.replace('string&', '')
                 varlist[intvar]=getin
 
             if "input&" in getin:
+                getin=getin.replace(" ","")
                 getin=getin.replace("input&","")
                 varlist[intvar]=input(getin)
 
@@ -56,14 +57,8 @@ if line1=="start{\n":
             jumpnumber=getlines.replace(" ","")
             jumpnumber=jumpnumber.replace("\n","")
             jumpnumber=jumpnumber.replace("jump[","")
-            jumpnumber=jumpnumber.replace("]","")
-
-            if "var" in jumpnumber:
-                jumpnumber=varlist[int(jumpnumber.replace("var&",""))]
-            
-            jumpnumber=int(jumpnumber)
+            jumpnumber=int(jumpnumber.replace("]",""))
             rh=jumpnumber-1    #最后会加1，所以减1
-            
 
         if revar=="=if":
             ifvar1=getlines.replace("=if{","")
@@ -105,13 +100,6 @@ if line1=="start{\n":
             inputcmd=inputcmd.replace("console[","")
             inputcmd=inputcmd.replace("]","")
             inputcmd=inputcmd.replace("*s"," ")
-
-            if "string&" in inputcmd:
-                inputcmd=inputcmd.replace("string&","")
-
-            if "var&" in inputcmd:
-                inputcmd=varlist[int(inputcmd.replace("var&",""))]
-
             os.system(inputcmd)
 
         if revar=="wait":
@@ -120,13 +108,16 @@ if line1=="start{\n":
             inputtimer=inputtimer.replace("wait[","")
             inputtimer=inputtimer.replace("]","")
             inputtimer=inputtimer.replace(" ","")
-            
-            if "var" in inputtimer:
-                inputtimer=varlist[int(inputtimer.replace("var&",""))]
-            
             inputtimer=int(inputtimer)
-
             time.sleep(inputtimer)
+
+        if revar=="del":
+            inputfile=getlines
+            inputfile=inputfile.replace("\n","")
+            inputfile=inputfile.replace("del[","")
+            inputfile=inputfile.replace("]","")
+            inputfile=inputfile.replace(" ","")
+            os.system("del "+inputfile)
 
         rh=rh+1
 

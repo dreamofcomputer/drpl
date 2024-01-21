@@ -18,3 +18,5 @@ def drpllib(text):
         return "console"
     if "wait" in text:
         return "wait"
+    if "del" in text:
+        return "del"
